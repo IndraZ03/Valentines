@@ -975,9 +975,52 @@
                 padding: 15px 25px;
             }
         }
+        /* Floating Partner Images */
+        .floating-partner {
+            position: fixed;
+            top: 50%;
+            width: 15vw;
+            max-width: 150px;
+            z-index: 90;
+            animation: partner-float 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(255,105,180,0.5));
+            pointer-events: none;
+        }
+
+        .partner-left {
+            left: 20px;
+            animation-delay: 0s;
+        }
+
+        .partner-right {
+            right: 20px;
+            animation-delay: 2s;
+        }
+
+        @keyframes partner-float {
+            0%, 100% { transform: translateY(-50%) translateY(-20px); }
+            50% { transform: translateY(-50%) translateY(20px); }
+        }
+
+        @media (max-width: 768px) {
+            .floating-partner {
+                width: 20vw;
+                top: auto;
+                bottom: 20px;
+                transform: translateY(0);
+                animation: partner-float-mobile 4s ease-in-out infinite;
+            }
+            
+            @keyframes partner-float-mobile {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-15px); }
+            }
+        }
     </style>
 </head>
 <body>
+    <img src="Subje1.png" class="floating-partner partner-left" alt="Partner Left">
+    <img src="Subject.png" class="floating-partner partner-right" alt="Partner Right">
     <!-- Confetti Canvas -->
     <canvas id="confettiCanvas"></canvas>
 
